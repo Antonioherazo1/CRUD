@@ -19,7 +19,7 @@ function printList(carArray, idEdit){
     carArray.forEach(car => {
         if(car.id == idEdit){
             htmlCardCarList +=`
-            <div class=" card text-center mb-4">
+            <div class=" card text-center mb-4 rounded">
                 <div class="card-body row p-relative">
                     <div class="col-md-4 p-absolute">
                         <form>
@@ -28,6 +28,7 @@ function printList(carArray, idEdit){
                         <strong> Color </strong>: <input id="colorEdit" value="${car.color}"></input></br>
                         <strong> Año </strong>: <input id="yearEdit" value="${car.year}"></input></br>
                         <strong> Precio </strong>: <input id="priceEdit" value="${car.price}"></input>                        
+                        <strong> Url Foto </strong>: <input id="photoEdit" value="${car.photo}"></input> 
                         <strong> Url Foto </strong>: <input id="photoEdit" value="${car.photo}"></input> 
                         </form>
                     </div>
