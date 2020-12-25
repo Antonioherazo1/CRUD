@@ -2,3 +2,9 @@ img {
     width: 100px;
     height: 100px;
 }
+.round{
+    border-radius: 30px;
+}
+.edit-form input{
+    max-width: 100%;
+}

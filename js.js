@@ -20,31 +20,29 @@ function printList(carArray, idEdit){
         if(car.id == idEdit){
             htmlCardCarList +=`
             <div class=" card text-center mb-4 rounded">
-                <div class="card-body row p-relative">
+                <div class="card-body row p-relative d-flex">
                     <div class="col-md-4 p-absolute">
-                        <form>
+                        <form class="edit-form">
                         <strong> Marca </strong>: <input id="brandEdit" value="${car.brand}"></input></br>
                         <strong> Model </strong>: <input id="modelEdit" value="${car.model}"></input></br>
                         <strong> Color </strong>: <input id="colorEdit" value="${car.color}"></input></br>
                         <strong> Año </strong>: <input id="yearEdit" value="${car.year}"></input></br>
                         <strong> Precio </strong>: <input id="priceEdit" value="${car.price}"></input>                        
                         <strong> Url Foto </strong>: <input id="photoEdit" value="${car.photo}"></input> 
-                        <strong> Url Foto </strong>: <input id="photoEdit" value="${car.photo}"></input> 
                         </form>
                     </div>
-                    <div class="col-md-4 p-absolute">
-                        <img src="${car.photo}" class="">
+                    <div class="col-md-4 p-absolute pt-2">
+                        <img src="${car.photo}" class="rounded">
                     </div>
-                    <div class="col-md-4 p-absolute">
-                        <button onclick="deleteCar(${car.id})" class="btn btn-danger rounded mb-3">Eliminar</button>
-                        <input type="submit" onclick="saveEdit(${car.id})" value="Guardar" class="btn btn-info rounded">
+                    <div class="col-md-4 p-absolute pt-2">
+                        <input onclick="saveEdit(${car.id})" value="Guardar" class="btn btn-light rounded btn-block">
                     </div>        
                 </div>
             </div>
             `;
         }else{
             htmlCardCarList +=`
-            <div class=" card text-center mb-4">
+            <div class=" card text-center mb-4 rounded">
                 <div class="card-body row p-relative">
                     <div class="col-md-4 p-absolute">
                         <strong> Marca </strong>: ${car.brand}</br>
@@ -53,12 +51,12 @@ function printList(carArray, idEdit){
                         <strong> Año </strong>: ${car.price}</br>
                         <strong> Precio </strong>: ${car.price}
                     </div>
-                    <div class="col-md-4 p-absolute">
-                        <img src="${car.photo}" class="">
+                    <div class="col-md-4 p-absolute pt-2">
+                        <img src="${car.photo}" class="rounded">
                     </div>
-                    <div class="col-md-4 p-absolute">
-                        <button onclick="deleteCar(${car.id})" class="btn btn-danger rounded mb-3">Eliminar</button>
-                        <button onclick="editCar(${car.id})" class="btn btn-success rounded mb-3">Editar</button>
+                    <div class="col-md-4 p-absolute pt-2">
+                        <button onclick="deleteCar(${car.id})" class="btn btn-outline-dark rounded mb-3 btn-block">Eliminar</button>
+                        <button onclick="editCar(${car.id})" class="btn btn-light rounded mb-3 btn-block">Editar</button>
                     </div>        
                 </div>
             </div>
