@@ -27,7 +27,7 @@ function printList(carArray, idEdit){
                         <strong> Model </strong>: <input id="modelEdit" value="${car.model}"></input></br>
                         <strong> Color </strong>: <input id="colorEdit" value="${car.color}"></input></br>
                         <strong> Año </strong>: <input id="yearEdit" value="${car.year}"></input></br>
-                        <strong> Precio </strong>: <input id="priceEdit" value="${car.price}"></input>                        
+                        <strong> Precio </strong>: <input id="priceEdit" value="${car.price}"></input></br>                    
                         <strong> Url Foto </strong>: <input id="photoEdit" value="${car.photo}"></input> 
                         </form>
                     </div>
