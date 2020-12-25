@@ -42,7 +42,7 @@ function printList(carArray, idEdit){
             `;
         }else{
             htmlCardCarList +=`
-            <div class=" card text-center mb-4 rounded">
+            <div class=" card shadow text-center mb-4 rounded">
                 <div class="card-body row p-relative">
                     <div class="col-md-4 p-absolute">
                         <strong> Marca </strong>: ${car.brand}</br>
