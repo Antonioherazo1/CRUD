@@ -13,42 +13,21 @@ class Car{
     }
 }
 
-function printList(carArray, idEdit){
+function printList(carArray){
+    // alert("printing list");
+    let idString ='';
     const carList = document.getElementById('car-list');
     let htmlCardCarList = ``;
     carArray.forEach(car => {
-        if(car.id == idEdit){
-            htmlCardCarList +=`
-            <div class=" card text-center mb-4 rounded">
-                <div class="card-body row p-relative d-flex">
-                    <div class="col-md-4 p-absolute">
-                        <form class="edit-form">
-                        <strong> Marca </strong>: <input id="brandEdit" value="${car.brand}"></input></br>
-                        <strong> Model </strong>: <input id="modelEdit" value="${car.model}"></input></br>
-                        <strong> Color </strong>: <input id="colorEdit" value="${car.color}"></input></br>
-                        <strong> Año </strong>: <input id="yearEdit" value="${car.year}"></input></br>
-                        <strong> Precio </strong>: <input id="priceEdit" value="${car.price}"></input></br>                    
-                        <strong> Url Foto </strong>: <input id="photoEdit" value="${car.photo}"></input> 
-                        </form>
-                    </div>
-                    <div class="col-md-4 p-absolute pt-2">
-                        <img src="${car.photo}" class="rounded">
-                    </div>
-                    <div class="col-md-4 p-absolute pt-2">
-                        <input onclick="saveEdit(${car.id})" value="Guardar" class="btn btn-light rounded btn-block">
-                    </div>        
-                </div>
-            </div>
-            `;
-        }else{
-            htmlCardCarList +=`
+        idString = car.id.toString();
+        htmlCardCarList +=`
             <div class=" card shadow text-center mb-4 rounded">
-                <div class="card-body row p-relative">
+                <div class="card-body row p-relative" id="${idString}">
                     <div class="col-md-4 p-absolute">
                         <strong> Marca </strong>: ${car.brand}</br>
                         <strong> Model </strong>: ${car.model}</br>
                         <strong> Color </strong>: ${car.color}</br>
-                        <strong> Año </strong>: ${car.price}</br>
+                        <strong> Año </strong>: ${car.year}</br>
                         <strong> Precio </strong>: ${car.price}
                     </div>
                     <div class="col-md-4 p-absolute pt-2">
@@ -61,9 +40,7 @@ function printList(carArray, idEdit){
                 </div>
             </div>
             `;
-        }
-
-       carList.innerHTML = htmlCardCarList;
+        carList.innerHTML = htmlCardCarList;
    });
 }
 
@@ -73,9 +50,31 @@ function deleteCar(id){
     printList(carArray);
 }
 function editCar(id){
-    printList(carArray, id);
+    // alert("editing");
+    const htmlEdit = document.getElementById(id.toString());
+    htmlEdit.innerHTML = `
+    <div class="card-body row p-relative d-flex" id="${id}">
+        <div class="col-md-4 p-absolute">
+            <form class="edit-form">
+            <strong> Marca </strong>: <input id="brandEdit" value="${carArray[id].brand}"></input></br>
+            <strong> Model </strong>: <input id="modelEdit" value="${carArray[id].model}"></input></br>
+            <strong> Color </strong>: <input id="colorEdit" value="${carArray[id].color}"></input></br>
+            <strong> Año </strong>: <input id="yearEdit" value="${carArray[id].year}"></input></br>
+            <strong> Precio </strong>: <input id="priceEdit" value="${carArray[id].price}"></input></br>                    
+            <strong> Url Foto </strong>: <input id="photoEdit" value="${carArray[id].photo}"></input> 
+            </form>
+        </div>
+        <div class="col-md-4 p-absolute pt-2">
+            <img src="${carArray[id].photo}" class="rounded">
+        </div>
+        <div class="col-md-4 p-absolute pt-2">
+            <input onclick="saveEdit(${id})" value="Guardar" class="btn btn-light rounded btn-block">
+        </div>        
+    </div>
+    `
 }
 function saveEdit(id){
+    // alert("saving edit");
     const index = carArray.findIndex((carArray) => carArray.id == id);
     carArray[index].brand = document.getElementById('brandEdit').value;
     carArray[index].model = document.getElementById('modelEdit').value;
@@ -83,7 +82,25 @@ function saveEdit(id){
     carArray[index].year = document.getElementById('yearEdit').value;
     carArray[index].price = document.getElementById('priceEdit').value;
     carArray[index].photo = document.getElementById('photoEdit').value;
-    printList(carArray);
+    
+    document.getElementById(id).innerHTML = `
+    <div class="card-body row p-relative" id="${id}">
+        <div class="col-md-4 p-absolute">
+            <strong> Marca </strong>: ${carArray[id].brand}</br>
+            <strong> Model </strong>: ${carArray[id].model}</br>
+            <strong> Color </strong>: ${carArray[id].color}</br>
+            <strong> Año </strong>: ${carArray[id].year}</br>
+            <strong> Precio </strong>: ${carArray[id].price}
+        </div>
+        <div class="col-md-4 p-absolute pt-2">
+            <img src="${carArray[id].photo}" class="rounded">
+        </div>
+        <div class="col-md-4 p-absolute pt-2">
+            <button onclick="deleteCar(${id})" class="btn btn-outline-dark rounded mb-3 btn-block">Eliminar</button>
+            <button onclick="editCar(${id})" class="btn btn-light rounded mb-3 btn-block">Editar</button>
+        </div>        
+    </div>
+    `;
 }
 
 // DOM Events
